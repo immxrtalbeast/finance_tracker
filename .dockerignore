@@ -1,0 +1,7 @@
+.git
+*.pyc
+__pycache__/
+.venv/
+tests/
+.env
+poetry.lock

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.venv
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+project.yaml
+.python-version
