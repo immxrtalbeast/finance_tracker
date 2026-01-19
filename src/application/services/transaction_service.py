@@ -4,9 +4,9 @@ from decimal import Decimal
 from typing import Callable, Optional
 from uuid import UUID
 
-from application.services.unit_of_work import IUnitOfWork
 from domain.entities.transaction import Transaction, TransactionType
 from domain.errors.base_errors import Forbidden, NotFound
+from domain.repositories.unit_of_work import IUnitOfWork
 
 logger = logging.getLogger(__name__)
 
