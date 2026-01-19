@@ -1,6 +1,7 @@
 Finance Tracker (FastAPI)
 =========================
 [![wakatime](https://wakatime.com/badge/user/42cf6868-b638-4d34-9e52-ec8f63476139/project/ef516345-56c2-4f43-a3e7-9ba70a99e1ee.svg)](https://wakatime.com/badge/user/42cf6868-b638-4d34-9e52-ec8f63476139/project/ef516345-56c2-4f43-a3e7-9ba70a99e1ee)
+
 Небольшой сервис, чтобы освоиться на FastAPI с многослойной архитектурой (domain → application services → infrastructure) для пользователей, счетов и транзакций.
 
 Стек
