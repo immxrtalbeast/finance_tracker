@@ -22,6 +22,7 @@ class SQLAlchemyAccountRepository(IAccountRepository):
         orm_account = to_orm(account)
         self.session.add(orm_account)
         await self.session.flush()
+        await self.session.commit()
         return orm_account.id
 
     async def get_by_id(self, account_id: UUID) -> Account | None:
@@ -38,6 +39,7 @@ class SQLAlchemyAccountRepository(IAccountRepository):
     async def delete(self, account_id: UUID) -> bool:
         stmt = delete(self.model).where(self.model.id == account_id)
         res = await self.session.execute(stmt)
+        await self.session.commit()
         return bool(res.rowcount and res.rowcount > 0)  # type: ignore
 
     async def get_user_accounts(self, user_id: UUID) -> List[Account]:
@@ -53,4 +55,5 @@ class SQLAlchemyAccountRepository(IAccountRepository):
             .values(balance=self.model.balance + amount)
         )
         res = await self.session.execute(stmt)
+        await self.session.commit()
         return bool(res.rowcount and res.rowcount > 0)  # type: ignore
