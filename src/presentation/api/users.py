@@ -52,6 +52,15 @@ async def user(
     return user
 
 
+@router.get("/me", response_model=UserResponseDTO)
+async def me(
+    service: Annotated[UserService, Depends(user_service)],
+    current_uid: Annotated[UUID, Depends(current_user_id)],
+):
+    user = await service.get_user_by_id(current_uid)
+    return user
+
+
 @router.get("/email", response_model=UserResponseDTO, deprecated=True)
 async def get_user_by_email(
     email: UserByEmailDTO,
