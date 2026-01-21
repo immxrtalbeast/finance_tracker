@@ -6,7 +6,6 @@ from application.services.account_service import AccountService
 from application.services.transaction_service import TransactionService
 from application.services.user_service import UserService
 from infrastructures.db.account_db import SQLAlchemyAccountRepository
-from infrastructures.db.transaction_db import SQLAlchemyTransactionRepository
 from infrastructures.db.user_db import SQLAlchemyUserRepository
 from infrastructures.uow.sqlalchemy_uow import SQLAlchemyUnitOfWork
 from utils import jwt_util

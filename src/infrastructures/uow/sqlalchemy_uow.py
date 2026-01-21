@@ -2,9 +2,9 @@ from typing import Callable
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from application.services.unit_of_work import IUnitOfWork
 from domain.repositories.account_repository import IAccountRepository
 from domain.repositories.transaction_repository import ITransactionRepository
+from domain.repositories.unit_of_work import IUnitOfWork
 from infrastructures.db.account_db import SQLAlchemyAccountRepository
 from infrastructures.db.transaction_db import SQLAlchemyTransactionRepository
 
