@@ -40,6 +40,15 @@ async def login(
     return response
 
 
+@router.get("/me", response_model=UserResponseDTO)
+async def me(
+    service: Annotated[UserService, Depends(user_service)],
+    current_uid: Annotated[UUID, Depends(current_user_id)],
+):
+    user = await service.get_user_by_id(current_uid)
+    return user
+
+
 @router.get("/{user_id}", response_model=UserResponseDTO)
 async def user(
     user_id: UUID,
@@ -49,15 +58,6 @@ async def user(
     if user_id != current_uid:
         raise HTTPException(status_code=403, detail="Forbidden")
     user = await service.get_user_by_id(user_id)
-    return user
-
-
-@router.get("/me", response_model=UserResponseDTO)
-async def me(
-    service: Annotated[UserService, Depends(user_service)],
-    current_uid: Annotated[UUID, Depends(current_user_id)],
-):
-    user = await service.get_user_by_id(current_uid)
     return user
 
 
