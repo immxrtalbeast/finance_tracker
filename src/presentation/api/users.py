@@ -1,3 +1,4 @@
+import json
 from typing import Annotated
 from uuid import UUID
 
@@ -30,7 +31,11 @@ async def login(
     dto: UserLoginDTO, service: Annotated[UserService, Depends(user_service)]
 ):
     token = await service.login(dto.email, dto.password)
-    response = Response(content="ok", status_code=status.HTTP_200_OK)
+    response = Response(
+        json.dumps({"login": True}),
+        media_type="application/json",
+        status_code=status.HTTP_200_OK,
+    )
     response.set_cookie(
         key="access_token",
         value=token,
